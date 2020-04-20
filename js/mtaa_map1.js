@@ -91,7 +91,7 @@ function featureToMarker(feature, latlng) {
 
 //data
 $.ajax({
-        url : ' http://mtaaapp-env.m3s5dcwzhv.us-east-1.elasticbeanstalk.com/api/coronaData',
+        url : ' //mtaaapp-env.m3s5dcwzhv.us-east-1.elasticbeanstalk.com/api/coronaData',
         async: false,
         global: false,
         dataType: "json",
