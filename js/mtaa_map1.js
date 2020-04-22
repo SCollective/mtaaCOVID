@@ -1,7 +1,7 @@
 accessToken = 'pk.eyJ1Ijoic2ltb2EiLCJhIjoiX216YUw5NCJ9.q3fbwUbgxeh55HSI2kvWbQ';
 
 var map = L.map('map', {
-    zoom: 12,
+    zoom: 13,
     attributionControl: true,
     center: L.latLng([-1.299550, 36.835718]),
   }),
@@ -108,7 +108,7 @@ for(var key in messages){
   var latLng = L.latLng([messages[key].latitude, messages[key].longitude]);
   L.circleMarker(latLng,{
     opacity:0,
-    radius: 6,
+    radius: 7,
     weight:0.9,
     fillColor: feelingColor(messages[key].color),
     fillOpacity:1
