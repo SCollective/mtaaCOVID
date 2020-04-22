@@ -9,7 +9,7 @@ var map = L.map('map', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
   styledLayer = new L.TileLayer(
-      'https://api.mapbox.com/styles/v1/simoa/ck98kv2b20v1f1ilu3620rsxb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2ltb2EiLCJhIjoiX216YUw5NCJ9.q3fbwUbgxeh55HSI2kvWbQ', {
+      'https://api.mapbox.com/styles/v1/simoa/ck9b75c7c0cnb1iqsw0lwm72c/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2ltb2EiLCJhIjoiX216YUw5NCJ9.q3fbwUbgxeh55HSI2kvWbQ', {
           tileSize: 512,
           zoomOffset: -1,
           attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -107,9 +107,9 @@ var markerGroup = L.featureGroup([]).addTo(map);
 for(var key in messages){
   var latLng = L.latLng([messages[key].latitude, messages[key].longitude]);
   L.circleMarker(latLng,{
-    opacity:0.5,
-    radius: 5,
-    weight:0.8,
+    opacity:0,
+    radius: 6,
+    weight:0.9,
     fillColor: feelingColor(messages[key].color),
     fillOpacity:1
         }).bindPopup(messages[key].description).addTo(markerGroup);
