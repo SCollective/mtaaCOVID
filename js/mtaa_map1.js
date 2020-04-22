@@ -1,4 +1,3 @@
-accessToken = 'pk.eyJ1Ijoic2ltb2EiLCJhIjoiX216YUw5NCJ9.q3fbwUbgxeh55HSI2kvWbQ';
 
 var map = L.map('map', {
     zoom: 13,
@@ -9,7 +8,7 @@ var map = L.map('map', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
   styledLayer = new L.TileLayer(
-      'https://api.mapbox.com/styles/v1/simoa/ck9b75c7c0cnb1iqsw0lwm72c/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2ltb2EiLCJhIjoiX216YUw5NCJ9.q3fbwUbgxeh55HSI2kvWbQ', {
+      'https://api.mapbox.com/styles/v1/simoa/ck9b75c7c0cnb1iqsw0lwm72c/tiles/256/{z}/{x}/{y}', {
           tileSize: 512,
           zoomOffset: -1,
           attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
