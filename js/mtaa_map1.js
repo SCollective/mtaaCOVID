@@ -187,8 +187,8 @@ $( ".target" ).change(function() {
     filter: function settlementFilter(feature) {
                   if (feature.properties.name === settlement) return true
                   }
-  }).addTo(map);
-  map.fitBounds(areas);
+  });
+  map.fitBounds(areas.getBounds());
 
 });
 
