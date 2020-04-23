@@ -2,7 +2,7 @@
 var map = L.map('map', {
     zoom: 13,
     attributionControl: true,
-    center: L.latLng([-1.299550, 36.835718]),
+    center: L.latLng([-1.289550, 36.835718]),
   }),
   osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -103,15 +103,15 @@ $.ajax({
         }
     });
 var markerGroup = L.featureGroup([]).addTo(map);
-for(var key in messages){
-  var latLng = L.latLng([messages[key].latitude, messages[key].longitude]);
-  L.circleMarker(latLng,{
+for (var i = messages.length - 1; i >= 0; i--) {
+  var latlng = L.latLng([messages[i].latitude, messages[i].longitude]);
+  L.circleMarker(latlng,{
     opacity:0,
-    radius: 7,
+    radius: 8,
     weight:0.9,
-    fillColor: feelingColor(messages[key].color),
+    fillColor: feelingColor(messages[i].color),
     fillOpacity:1
-        }).bindPopup(messages[key].description).addTo(markerGroup);
+  }).bindPopup(messages[i].description).addTo(map);
 }
 
 
