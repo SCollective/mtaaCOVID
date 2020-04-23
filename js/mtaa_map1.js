@@ -206,7 +206,7 @@ $('#example').DataTable( {
     scrollY: "300px",
     info:false,
     fixedColumns: true,
-    data: messages,
+    data: messages.reverse(),
     columns: [
         { data: "description", "width": "20px" }
     ],
