@@ -102,6 +102,7 @@ $.ajax({
           console.log(messages.length); 
         }
     });
+
 var markerGroup = L.featureGroup([]).addTo(map);
 for (var i = messages.length - 1; i >= 0; i--) {
   var latlng = L.latLng([messages[i].latitude, messages[i].longitude]);
@@ -162,7 +163,7 @@ var legend = L.control({position: 'topright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML += "<h4>Settlement </h4>";
-    div.innerHTML += '<select class="target"><option selected="selected" disabled="disabled">Select a Settlement</option><option value="mathare">Mathare</option><option value="kibera">Kibera</option></select>';
+    div.innerHTML += '<select class="target"><option selected="selected" disabled="disabled">Select a Settlement</option><option value="mathare">Mathare</option><option value="kibera">Kibera</option><option value="kawangware">Kawangware</option><option value="mukuru">Mukuru</option><option value="kariobangi">Kariobangi</option></select>';
     //div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -182,14 +183,13 @@ legend_table.addTo(map);
 //select a Settlement
 $( ".target" ).change(function() {
   var settlement = $( ".target option:selected" ).val();
-  console.log(settlement);
+  //console.log(settlement);
   var areas = L.geoJson(zones,{style:style,
     filter: function settlementFilter(feature) {
-                  if (feature.properties.name === settlement) return true
+                  if (feature.properties.area === settlement) return true
                   }
   });
   map.fitBounds(areas.getBounds());
-
 });
 
 //TABLES
@@ -206,11 +206,13 @@ $('#example').DataTable( {
     scrollY: "300px",
     info:false,
     fixedColumns: true,
+    rowId: 'id',
     data: messages.reverse(),
     columns: [
-        { data: "description", "width": "20px" }
+        { data: "description"}
     ],
     rowCallback: function( row, data, index ) {
+
           if ( data.color == "color0" )
           {
               $('td', row).css('background-color', '#d7191c');
@@ -240,7 +242,30 @@ $('#example').DataTable( {
               $('td', row).css('background-color', '#1a9641');
           }
     }
+});
 
+var pulse;
 
-} );
+//zoom to point
+$('#example tbody').on('click', 'tr', function () {
+  if (pulse) {
+  map.removeLayer(pulse);
+  }
+
+  var rowId = $(this).attr("id");
+  iMessage = _.filter(messages, function(th){ 
+    return th.id == rowId;
+  });
+  map.setView(new L.LatLng(iMessage[0].latitude,iMessage[0].longitude),22);
+  pulse = new L.circleMarker([iMessage[0].latitude,iMessage[0].longitude], {
+    className: 'pulse',
+    radius: 15,
+    opacity:1,
+    color: feelingColor(iMessage[0].color),
+    fillOpacity:0
+  }).addTo(map);
+  
+
+});
+
 
