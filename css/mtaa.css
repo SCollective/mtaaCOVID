@@ -37,3 +37,17 @@
 
     #example_wrapper{width: 100%}
     #ui-id-2{width: 500px}
+
+    .pulse {
+        animation: pulsate 2s infinite;
+        -webkit-animation: pulsate 1s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        opacity: 0.0
+    }
+
+
+    @keyframes pulsate {
+        0% {transform: opacity: 0.0;}
+        70% {opacity: 0.5;}
+        100% {transform: opacity: 1.0;}
+    }
